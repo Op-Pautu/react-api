@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import Card from "./components/Card";
+import TopNav from "./components/TopNav";
 
 function App() {
   const [items, setItems] = useState([]);
@@ -26,16 +27,19 @@ function App() {
   }, [items]);
 
   return (
-    <div className="h-full flex items-center justify-center">
-      <h1 className="text-5xl text-sky-600 flex items-center">QuadB Tech</h1>
-
-      <main>
-        <div>
-          {items?.map((item) => (
-            <Card key={item.show.id} series={item.show} />
-          ))}
+    <div className="bg-black flex flex-col items-center">
+      <TopNav />
+      <div className="max-w-7xl bg-white">
+        <div className="flex flex-col items-center">
+          <main className="p-10">
+            <div className="border rounded-md">
+              {items?.map((item) => (
+                <Card key={item.show.id} show={item.show} />
+              ))}
+            </div>
+          </main>
         </div>
-      </main>
+      </div>
     </div>
   );
 }
