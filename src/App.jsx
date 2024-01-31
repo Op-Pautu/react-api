@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
+import Card from "./components/Card";
 
 function App() {
   const [items, setItems] = useState([]);
@@ -31,7 +32,7 @@ function App() {
       <main>
         <div>
           {items?.map((item) => (
-            <div key={item.show.id}>{item.show.name}</div>
+            <Card key={item.show.id} series={item.show} />
           ))}
         </div>
       </main>
