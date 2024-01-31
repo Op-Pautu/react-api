@@ -1,6 +1,5 @@
 import { Info } from "lucide-react";
 import React, { useState } from "react";
-import Modal from "./Modal";
 import { useNavigate } from "react-router-dom";
 
 const Card = ({ show }) => {
@@ -49,7 +48,7 @@ const Card = ({ show }) => {
             onClick={handleShowDetails}
             className="rounded-full p-3 hover:bg-sky-100 transition duration-300"
           >
-            <Info className="text-sky-500" onClick={() => setOpenModal(true)} />
+            <Info className="text-sky-500" />
           </div>
         </div>
       </div>

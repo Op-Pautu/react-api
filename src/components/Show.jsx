@@ -1,13 +1,19 @@
-import { X } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import TopNav from "./TopNav";
+import BookingForm from "./BookingForm";
 
 const Show = () => {
   const { state } = useLocation();
   const show = state && state.show;
 
   const premieredYear = show.premiered?.substring(0, 4);
+
+  const [isFormVisible, setIsFormVisible] = useState(false);
+
+  const handleBookTicket = () => {
+    setIsFormVisible(true);
+  };
 
   return (
     <div className="flex flex-col items-center">
@@ -51,10 +57,19 @@ const Show = () => {
           </div>
         </div>
         <div className="px-8 py-4">
-          <button className="bg-blue-500 text-white px-8 py-4 rounded cursor-pointer hover:scale-105">
+          <button
+            onClick={handleBookTicket}
+            className="bg-blue-500 text-white px-8 py-4 rounded cursor-pointer hover:scale-105"
+          >
             Book Ticket
           </button>
         </div>
+        {isFormVisible && (
+          <BookingForm
+            show={show}
+            onCloseForm={() => setIsFormVisible(false)}
+          />
+        )}
       </div>
     </div>
   );
