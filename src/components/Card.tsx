@@ -44,7 +44,7 @@ const Card = ({ show }) => {
           </div>
         </div>
 
-        {openModal && <Modal onClose={() => setOpenModal(false)} />}
+        {openModal && <Modal onClose={() => setOpenModal(false)} show={show} />}
       </div>
     </div>
   );
