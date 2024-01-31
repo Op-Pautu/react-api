@@ -1,5 +1,6 @@
 import { X } from "lucide-react";
 import React, { useState } from "react";
+import BookingForm from "./BookingForm";
 
 const Modal = ({ onClose, show }) => {
   const premieredYear = show.premiered?.substring(0, 4);
@@ -58,6 +59,12 @@ const Modal = ({ onClose, show }) => {
             Book Ticket
           </button>
         </div>
+        {isFormVisible && (
+          <BookingForm
+            show={show}
+            onCloseForm={() => setFormVisibility(false)}
+          />
+        )}
       </div>
     </div>
   );

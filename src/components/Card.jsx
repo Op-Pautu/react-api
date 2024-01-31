@@ -1,11 +1,17 @@
 import { Info } from "lucide-react";
 import React, { useState } from "react";
 import Modal from "./Modal";
+import { useNavigate } from "react-router-dom";
 
 const Card = ({ show }) => {
-  const [openModal, setOpenModal] = useState(false);
+  const navigate = useNavigate();
+
+  const handleShowDetails = () => {
+    navigate("/show", { state: { show } });
+  };
 
   const premieredYear = show.premiered?.substring(0, 4);
+
   return (
     <div className="w-[1000px] rounded-md  p-3 border-b relative">
       <div className="flex">
@@ -39,12 +45,13 @@ const Card = ({ show }) => {
           </div>
         </div>
         <div className="flex items-center justify-center ml-auto cursor-pointer ">
-          <div className="rounded-full p-3 hover:bg-sky-100 transition duration-300">
+          <div
+            onClick={handleShowDetails}
+            className="rounded-full p-3 hover:bg-sky-100 transition duration-300"
+          >
             <Info className="text-sky-500" onClick={() => setOpenModal(true)} />
           </div>
         </div>
-
-        {openModal && <Modal onClose={() => setOpenModal(false)} show={show} />}
       </div>
     </div>
   );
